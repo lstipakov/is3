@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from djraspya import views
+from weba import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
