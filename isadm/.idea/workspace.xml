@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dbe067d-dba5-43df-a9c1-3edb186c79f9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/isserver.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/srv.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/isserver/srv.py" afterPath="$PROJECT_DIR$/../server/isserver/srv.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/isserver/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/isserver/.idea/workspace.xml" />
     </list>
     <ignored path="isadm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weba/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="152" max-vertical-offset="380">
+            <state line="2" column="19" selection-start="56" selection-end="56" vertical-scroll-proportion="0.090368606" vertical-offset="0" max-vertical-offset="841">
               <folding />
             </state>
           </provider>
@@ -82,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/weba/static/weba/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="41" selection-start="48" selection-end="48" vertical-scroll-proportion="0.045184303" vertical-offset="0" max-vertical-offset="841">
+            <state line="6" column="1" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456">
               <folding />
             </state>
           </provider>
@@ -710,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weba/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weba/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="532">
@@ -751,7 +738,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weba/static/weba/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="41" selection-start="48" selection-end="48" vertical-scroll-proportion="0.045184303" vertical-offset="0" max-vertical-offset="841">
+        <state line="6" column="1" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weba/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="19" selection-start="56" selection-end="56" vertical-scroll-proportion="0.090368606" vertical-offset="0" max-vertical-offset="841">
           <folding />
         </state>
       </provider>

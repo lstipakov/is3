@@ -2,6 +2,12 @@ from twisted.internet import reactor
 from twisted.internet.protocol import ServerFactory
 from twisted.protocols.basic import LineOnlyReceiver
 
+def CutLine(line):
+        x = line.index(r'/')
+        print '###################'
+        print line[x:]
+        return line[x:]
+
 class ChatProtocol(LineOnlyReceiver):
 
     name = ""
@@ -24,15 +30,26 @@ class ChatProtocol(LineOnlyReceiver):
         self.factory.clientProtocols.remove(self)
         self.factory.sendMessageToAllClients(self.getName()+" has disconnected.")
 
+
+
     def lineReceived(self, line):
         print self.getName()+" said "+line
+
+        line = CutLine(line)
+
         if line[:5] == "/NAME":
             oldName = self.getName()
             self.name = line[5:].strip()
             self.factory.sendMessageToAllClients(oldName+" changed name to "+self.getName())
         elif line == "/EXIT":
             self.transport.loseConnection()
-        else: 
+
+        elif line[:5] == "/TEST":
+            print 'Testing'
+            self.factory.sendMessageToAllClients('Test OK')
+
+
+        else:
             self.factory.sendMessageToAllClients(self.getName()+" says "+line)
 
     def sendLine(self, line):
