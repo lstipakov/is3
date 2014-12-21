@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8dbe067d-dba5-43df-a9c1-3edb186c79f9" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\MyWork\is3\isadm\weba\static\weba\css\style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/isadm/settings.py" afterPath="$PROJECT_DIR$/isadm/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weba/urls.py" afterPath="$PROJECT_DIR$/weba/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weba/templates/weba/webabase.html" afterPath="$PROJECT_DIR$/weba/templates/weba/webabase.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/isserver.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/srv.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../server/isserver/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="isadm.iws" />
@@ -102,6 +106,9 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -244,7 +251,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../IS3/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server/isserver" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -485,12 +492,18 @@
       <created>1419176016491</created>
       <updated>1419176016491</updated>
     </task>
+    <task id="LOCAL-00001" summary="css back">
+      <created>1419179261948</created>
+      <updated>1419179261948</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -524,6 +537,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="css back" />
+    <option name="LAST_COMMIT_MESSAGE" value="css back" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
