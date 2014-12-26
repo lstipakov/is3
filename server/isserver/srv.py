@@ -12,25 +12,39 @@ def startlog():
 
 
 
-class ChatProtocolFactory(ServerFactory):
+class ISProtocolFactory(ServerFactory):
 
-    protocol = ChatProtocol
+    protocol = ISProtocol
+    NumCon = 0
+    is_client = []
 
     def __init__(self):
         self.clientProtocols = []
+        self.NumCon = 0
+        self.is_client = []
 
     def sendMessageToAllClients(self, mesg):
         for client in self.clientProtocols:
             client.sendLine(mesg)
 
 
+    def getClientsList(self):
+        for client in self.clientProtocols:
+            client.sendLine('!!!!!!!!!!!!')
+
+
+    def getNumCon(self):
+        for client in self.clientProtocols:
+
+            #print ISProtocol(client).name
+            client.sendLine('Num conn ' + str(self.NumCon))
 
 
 if __name__ == '__main__':
 
 
     log_msg(">>Starting Server");
-    factory = ChatProtocolFactory()
+    factory = ISProtocolFactory()
 
     reactor.listenTCP(12345, factory)
     if LOGGING:
