@@ -2,17 +2,22 @@ from is_srv_f import *
 from twisted.protocols.basic import LineOnlyReceiver
 #from pdb import line_prefix
 from twisted.enterprise import adbapi
+from send_task import send_msg
 
 CMD = [{'cmd': 'NAME', 'val' : None, 'pos': {}},
        {'cmd': 'EXIT', 'val' : None, 'pos': {}},
        {'cmd': 'TEST', 'val' : None, 'pos': {}},
+       {'cmd': 'TASK', 'val' : None, 'pos': {}},
+       {'cmd': 'CALC_EST', 'val' : None, 'pos': {}},
+       {'cmd': 'CALC_TRAFF', 'val' : None, 'pos': {}},
        {'cmd': 'SAY', 'val' : None, 'pos': {}},
        {'cmd': 'CLI_LIST', 'val' : None, 'pos': {}},
        {'cmd': 'NUMCON', 'val' : None, 'pos': {}}
        ]
 log_msg('Connecting to log database....')
 try:
-    dbpool = adbapi.ConnectionPool("sqlite3", 'logbase.db3')
+    dbpool = adbapi.ConnectionPool("sqlite3", 'logbase.db',check_same_thread=False)
+
 except:
     dbpool = None
 
@@ -21,7 +26,7 @@ except:
 def db_ins_log(msg):
     if dbpool != None:
         try:
-            dbpool.execute('insert into t_logs values(CURRENT_TIMESTAMP, ?)', msg)
+            dbpool.runQuery('insert into t_logs values(CURRENT_TIMESTAMP, ?)', (msg,))
         except:
             log_msg('Error query')
 
@@ -96,7 +101,11 @@ class ISProtocol(LineOnlyReceiver):
         self.sendLine("Send '/TEST ' to get test message.")
         self.sendLine("Send '/CLI_LIST ' to get list of clients.")
         self.sendLine("Send '/NUMCON ' to get count of connections.")
+        self.sendLine("Send '/TASK [command] ' to send command into queue.")
+        self.sendLine("Send '/CALC_EST [id] ' to send command into queue on calculate estimate.")
+        self.sendLine("Send '/CALC_TRAFF [id] ' to send command into queue on calculate traffic.")
         self.sendLine("Send '/EXIT' to quit.")
+
         self.factory.sendMessageToAllClients(self.getName()+" has joined the party.")
         self.factory.clientProtocols.append(self)
 
@@ -114,7 +123,7 @@ class ISProtocol(LineOnlyReceiver):
     def line_protocol1(self, line):
         cmd = line['cmd']
         val = line['val']
-        db_ins_log(cmd)
+        db_ins_log(str(cmd))
         if cmd == "NAME":
             oldName = self.getName()
 
@@ -129,15 +138,20 @@ class ISProtocol(LineOnlyReceiver):
         elif cmd == "TEST":
             log_msg('Testing')
             self.factory.sendMessageToAllClients('Test OK')
+        elif cmd == "TASK":
+                send_msg(val)
+
+        elif cmd == "CALC_EST":
+                send_msg(val, is_queue='est')
 
         elif cmd == "CLI_LIST":
             log_msg('Request list of connections')
             self.factory.getClientsList()
+
         elif cmd == "NUMCON":
             log_msg('Request count of connections')
-
-            self.factory.getNumCon()
-
+            self.sendLine(str(self.factory.NumCon))
+            #self.factory.getNumCon()
 
         elif cmd == 'SAY':
             self.factory.sendMessageToAllClients(self.getName()+" says "+val)
@@ -160,8 +174,8 @@ class ISProtocol(LineOnlyReceiver):
 if __name__ == '__main__':
     print '---------'
     parse_line('zzzzz/EXIT')
-    dbpool1 = adbapi.ConnectionPool("sqlite3", "logbase.db")
+    dbpool1 = adbapi.ConnectionPool("sqlite3", "logbase.db",check_same_thread=False)
     #dbpool1.
-    dbpool1.execute('insert into t_logs values(CURRENT_TIMESTAMP, ?)', '11111')
+    dbpool1.openQuery('insert into t_logs values(CURRENT_TIMESTAMP, ?)', '11111')
     #db_ins_log('!!!!!!!!!!!!')
 

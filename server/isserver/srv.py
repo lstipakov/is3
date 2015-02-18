@@ -18,6 +18,7 @@ class ISProtocolFactory(ServerFactory):
     NumCon = 0
     is_client = []
 
+
     def __init__(self):
         self.clientProtocols = []
         self.NumCon = 0
@@ -26,6 +27,9 @@ class ISProtocolFactory(ServerFactory):
     def sendMessageToAllClients(self, mesg):
         for client in self.clientProtocols:
             client.sendLine(mesg)
+
+
+
 
 
     def getClientsList(self):
