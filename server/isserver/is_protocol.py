@@ -3,6 +3,7 @@ from twisted.protocols.basic import LineOnlyReceiver
 #from pdb import line_prefix
 from twisted.enterprise import adbapi
 from send_task import send_msg
+from twisted.internet import threads
 
 CMD = [{'cmd': 'NAME', 'val' : None, 'pos': {}},
        {'cmd': 'EXIT', 'val' : None, 'pos': {}},
@@ -114,6 +115,8 @@ class ISProtocol(LineOnlyReceiver):
         self.factory.sendMessageToAllClients(self.getName()+" has disconnected.")
         self.factory.NumCon -= 1
 
+    def stuffDone(self, res):
+        self.sendLine("job done: %s" % res)    
 
     def line_protocol1(self, line):
         cmd = line['cmd']
@@ -137,7 +140,10 @@ class ISProtocol(LineOnlyReceiver):
                 send_msg(val)
 
         elif cmd == "CALC_EST":
-                send_msg(val, is_queue='est')
+            self.sendLine("job %s started" % val.strip())
+            d = threads.deferToThread(self.factory.doStuff, val)
+            d.addCallback(self.stuffDone)
+            #send_msg(val, is_queue='est')
 
         elif cmd == "CLI_LIST":
             log_msg('Request list of connections')

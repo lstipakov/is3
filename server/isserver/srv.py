@@ -46,6 +46,12 @@ class ISProtocolFactory(ServerFactory):
             if p.getName() == name:
                 p.transport.loseConnection()
 
+    def doStuff(self, param):
+        log_msg("doing stuff for %s" % param)
+        import time
+        time.sleep(5)
+        return "<job result for> %s" % param
+
 if __name__ == '__main__':
 
 
