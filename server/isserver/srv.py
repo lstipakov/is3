@@ -33,9 +33,7 @@ class ISProtocolFactory(ServerFactory):
 
 
     def getClientsList(self):
-        for client in self.clientProtocols:
-            client.sendLine('!!!!!!!!!!!!')
-
+        return [c.getName() for c in self.clientProtocols]
 
     def getNumCon(self):
         for client in self.clientProtocols:
@@ -43,6 +41,10 @@ class ISProtocolFactory(ServerFactory):
             #print ISProtocol(client).name
             client.sendLine('Num conn ' + str(self.NumCon))
 
+    def kickByName(self, name):
+        for p in self.clientProtocols:
+            if p.getName() == name:
+                p.transport.loseConnection()
 
 if __name__ == '__main__':
 

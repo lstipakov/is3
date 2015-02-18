@@ -84,17 +84,11 @@ def parse_line(line):
 
 #=================================================twisted
 class ISProtocol(LineOnlyReceiver):
-
-    name = ""
-
-
-
     def getName(self):
-        if self.name!="":
-            return self.name
-        return self.transport.getPeer().host
-
+        return self.name
+    
     def connectionMade(self):
+        self.name = str(self.transport.getPeer())
         log_msg("New connection from "+self.getName())
         self.sendLine("Welcome to ISserver.")
         self.sendLine("Send '/NAME [new name]' to change your name.")
@@ -104,6 +98,7 @@ class ISProtocol(LineOnlyReceiver):
         self.sendLine("Send '/TASK [command] ' to send command into queue.")
         self.sendLine("Send '/CALC_EST [id] ' to send command into queue on calculate estimate.")
         self.sendLine("Send '/CALC_TRAFF [id] ' to send command into queue on calculate traffic.")
+        self.sendLine("Send '/KICK [name]' to kick client.")
         self.sendLine("Send '/EXIT' to quit.")
 
         self.factory.sendMessageToAllClients(self.getName()+" has joined the party.")
@@ -146,7 +141,9 @@ class ISProtocol(LineOnlyReceiver):
 
         elif cmd == "CLI_LIST":
             log_msg('Request list of connections')
-            self.factory.getClientsList()
+            clients = self.factory.getClientsList()
+            for c in clients:
+                self.sendLine(c)    
 
         elif cmd == "NUMCON":
             log_msg('Request count of connections')
@@ -156,6 +153,8 @@ class ISProtocol(LineOnlyReceiver):
         elif cmd == 'SAY':
             self.factory.sendMessageToAllClients(self.getName()+" says "+val)
 
+        elif cmd == "KICK":
+            self.factory.kickByName(val.strip())
 
         else:
             self.factory.sendMessageToAllClients(self.getName()+" says "+val)
